@@ -12,38 +12,61 @@ import java.util.ArrayList;
  */
 public class Coches extends MedioDeTransporte{
         private enumMelodia tipo;
+        
         private static ArrayList<String> melodiaCopiada =  new ArrayList<>();
-        private String[] arraySonidos = generaSonidoMelodia();
-
-    public Coches(enumMelodia tipo, int anioFabricacion, int numSonidos) {
-        super(anioFabricacion, numSonidos);
-        this.tipo = tipo;
-    }
-
 
         
-
         
-    public int numeroSonidos(){
-        int numeroSonidos = 0;
-        for(String name : arraySonidos){
-         numeroSonidos++;
-         
+        
+        public Coches(enumMelodia tipo, int anioFabricacion, int numSonidos, String sonidos) {
+            super(anioFabricacion, numSonidos,sonidos);
+            this.tipo = tipo;
+            this.sonidos = sonidos;
+            int  random = (int) (Math.random()*4)+3;
+            this.numSonidos = random;
+            Sonidos();
+
         }
-        return numeroSonidos;
+
+
+    
+
+
+    
+
+    @Override
+    public String toString() {
+        //MedioDeTransporte{anyoFabricacion=1999, sonidos=5}Coche{tipoClaxon=melodia}
+
+        return super.toString()+"MedioDeTransporte{anyoFabricacion=}"+this.anioFabricacion+", sonidos="+this.numSonidos+"}Coche{tipoClaxon="+this.tipo+"}";
     }
-       
-        @Override
-    public void muestraTransporte(){
+
+
         
-    }
+        public void Sonidos (){
+           String[]  array=generaSonidoMelodia();
+            String palabra = "";
+            for(int i=0;i<array.length;i++){
+                palabra=palabra+" "+array[i];
+            }
+            palabra = palabra.trim();
+
+            this.sonidos=palabra;
+        }
+        
+    
+       
+      
     
     public String[] generaSonidoMelodia(){
-         int numSonidos = (int) (Math.random()*4)+3;
+       
          CuentaSonidos+=numSonidos;
          
-         String[] nuevoArraySonidos = new String[numSonidos];
-         for(int i = 0;i<numSonidos;i++){
+         String[] nuevoArraySonidos = new String[6];
+         for(int i = 0 ;i<nuevoArraySonidos.length;i++){
+             nuevoArraySonidos[i]=" ";
+         }
+         for(int i = 0;i<this.numSonidos;i++){
              int valor =(int) Math.random()*6;
              switch (valor) {
                  case 0:
@@ -76,11 +99,12 @@ public class Coches extends MedioDeTransporte{
              
          }
          nuevoArraySonidos[0]="pii";
-         nuevoArraySonidos[5]="pii";
+         nuevoArraySonidos[this.numSonidos-1]="pii";
          
          return nuevoArraySonidos;
          
     }
+    
     
     public void suenaMelodia(String[]melodia){
         
@@ -90,16 +114,17 @@ public class Coches extends MedioDeTransporte{
     }
         
     public void copiaMelodia(String[]melodia){
-    melodiaCopiada.clear();
-        for(int i =0;i<melodia.length;i++){
-            melodiaCopiada.add(melodia[i]);
-        }
+    
+    }
+
+    public String getSonidos() {
+        return sonidos;
+    }
+
+    public void setSonidos(String sonidos) {
+        this.sonidos = sonidos;
     }
         
-        public void muestraMelodiaCopiada(){
-            for(String name : melodiaCopiada){
-                System.out.println(name +" ");
-            }
-        }
+     
         
 }

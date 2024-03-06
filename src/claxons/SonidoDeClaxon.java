@@ -9,9 +9,11 @@ package claxons;
  * @author Fran
  */
 public interface SonidoDeClaxon {
-     String[] generaSonidosMelodia();
+    String[] generaSonidosMelodia();    
      void suenaMelodia(String[]melodia);
-        
+    static int getCuentaSonidos(){
+        return 0 ;
+    }    
         
     
 }

@@ -11,15 +11,23 @@ import java.util.ArrayList;
  * @author Fran
  */
 public class MedioDeTransporte implements SonidoDeClaxon {
-       private final int anioFabricacion;
+       protected final int anioFabricacion ;
        protected static int CuentaSonidos;
        protected int numSonidos;
+       protected String sonidos;
 
        public static ArrayList<MedioDeTransporte> arrayTransportes = new ArrayList<>();
 
-    public MedioDeTransporte(int anioFabricacion, int numSonidos) {
+    public MedioDeTransporte(int anioFabricacion, int numSonidos, String sonidos) {
         this.anioFabricacion = anioFabricacion;
         this.numSonidos = numSonidos;
+        this.sonidos = sonidos;
+    }
+
+    
+
+    public MedioDeTransporte() {
+           this.anioFabricacion = 0;
     }
 
     
@@ -41,10 +49,23 @@ public class MedioDeTransporte implements SonidoDeClaxon {
     public void suenaMelodia(String[] melodia) {
 
     }
-    
-    public void muestraTransporte(){
-        
+
+    @Override
+    public String toString() {
+        return " ";
     }
+
+    public String getSonidos() {
+        return sonidos;
+    }
+
+    public void setSonidos(String sonidos) {
+        this.sonidos = sonidos;
+    }
+    
+    
+    
+    
     
         
         

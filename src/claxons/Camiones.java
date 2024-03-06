@@ -11,17 +11,29 @@ package claxons;
 public class Camiones extends MedioDeTransporte{
     private enumGraveAgudo tipo ;
 
-    public Camiones(enumGraveAgudo tipo, int anioFabricacion, int numSonidos) {
-        super(anioFabricacion, numSonidos);
+    public Camiones(enumGraveAgudo tipo, String sonidos, int anioFabricacion, int numSonidos) {
+        super(anioFabricacion, numSonidos,sonidos);
         this.tipo = tipo;
+        this.sonidos = sonidos;
+        CuentaSonidos+=1;
+        if(this.tipo==enumGraveAgudo.grave){
+            this.sonidos="brrrroonn";
+        }else if(this.tipo==enumGraveAgudo.agudo){
+
+            this.sonidos="fiiiiiii";
+        }
     }
+
+   
 
     
 
- @Override
-    public void muestraTransporte(){
-        
-    }    
+@Override
+    public String toString() {
+        //MedioDeTransporte{anyoFabricacion=1999, sonidos=5}Coche{tipoClaxon=melodia}
+
+        return super.toString()+"MedioDeTransporte{anyoFabricacion=}"+this.anioFabricacion+", sonidos="+this.numSonidos+"}Camión{Claxon="+this.tipo+"}";
+    }
     
     
     
